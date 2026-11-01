@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kugonakwashe Taanarwo Portfolio</title>
+<meta name="description" content="Portfolio of Kugonakwashe Taanarwo, BA Honours graduate in Zimbabwean History and International Affairs, University of Zimbabwe.">
+<script>
+  try { var t = localStorage.getItem("kt-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: an airport concourse. A departure board picks the role, a flight path walks through the research, and a to-scale timeline opens the career record. */
+:root {
+  --bg: #f3f5fa;
+  --surface: #ffffff;
+  --ink: #0e1a3a;
+  --body: #3b4664;
+  --muted: #647091;
+  --line: #d6dcea;
+  --accent: #2343e0;
+  --on-accent: #ffffff;
+  --soft: #e4e9fb;
+  --board: #0b1020;
+  --board-cell: #171e36;
+  --board-line: #2a3354;
+  --board-mute: #93a0c6;
+  --amber: #ffb51f;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --text: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b101f; --surface: #131a30; --ink: #eef1fb; --body: #bcc5de; --muted: #8f9abb;
+    --line: #29324f; --accent: #9fb1ff; --on-accent: #0b101f; --soft: #1c2545;
+    --board: #060914; --board-cell: #141b32; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b101f; --surface: #131a30; --ink: #eef1fb; --body: #bcc5de; --muted: #8f9abb;
+  --line: #29324f; --accent: #9fb1ff; --on-accent: #0b101f; --soft: #1c2545;
+  --board: #060914; --board-cell: #141b32; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--body); font: 400 17px/1.6 var(--text); }
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+h1, h2, h3 { color: var(--ink); font-family: var(--display); text-wrap: balance; }
+h2 { font-size: clamp(32px, 6vw, 52px); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+h3 { font-size: 21px; font-weight: 650; line-height: 1.2; letter-spacing: -0.01em; }
+a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+section { scroll-margin-top: 76px; }
+
+.shell {
+  width: 100%; max-width: 1140px; margin-inline: auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: clamp(56px, 9vw, 104px); }
+.eyebrow { font: 500 13px/1.3 var(--mono); color: var(--accent); }
+.intro { display: grid; gap: 14px; max-width: 720px; margin-bottom: clamp(30px, 5vw, 48px); }
+.intro p:last-child { font-size: 18px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 6px;
+  font: 600 15px/1.2 var(--text); text-decoration: none; white-space: nowrap;
+  background: var(--accent); color: var(--on-accent); transition: transform .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* Navigation */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.nav .shell { display: flex; align-items: center; gap: 22px; height: 62px; }
+.brand { font: 800 21px/1 var(--display); color: var(--ink); text-decoration: none; margin-right: auto; }
+.nav-links { display: flex; gap: 22px; font-size: 15px; font-weight: 500; }
+.nav-links a { color: var(--body); text-decoration: none; padding-block: 6px; border-bottom: 2px solid transparent; }
+.nav-links a:hover, .nav-links a.on { color: var(--ink); border-bottom-color: var(--accent); }
+.theme { font: 500 13px/1 var(--mono); color: var(--body); padding: 8px 10px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+.nav .btn { padding: 9px 13px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: clamp(36px, 6vw, 72px) clamp(44px, 7vw, 80px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(30px, 5vw, 44px); }
+h1 { font-size: clamp(47px, 12.2vw, 138px); font-weight: 800; line-height: .95; letter-spacing: -0.015em; }
+h1 span { display: block; }
+h1 .last { color: var(--accent); }
+.hero-sub { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px 56px; align-items: end; }
+.tag { font: 500 clamp(21px, 3vw, 29px)/1.25 var(--display); color: var(--ink); letter-spacing: -0.01em; text-wrap: pretty; }
+.meta { font-size: 15px; display: grid; gap: 2px; }
+
+.board { background: var(--board); border-radius: 12px; padding: clamp(14px, 3vw, 28px); display: grid; gap: 18px; color: #ffffff; }
+.board-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; font: 500 12.5px/1.4 var(--mono); color: var(--board-mute); }
+.board-head b { color: var(--amber); font-weight: 500; }
+.flaps { display: grid; grid-template-columns: repeat(19, minmax(0, 1fr)); gap: clamp(1px, .4vw, 4px); perspective: 500px; }
+.flap {
+  aspect-ratio: 3 / 4; display: grid; place-items: center; border-radius: clamp(2px, .4vw, 4px);
+  background: linear-gradient(var(--board-cell) 49%, var(--board) 49.5%, var(--board) 50.5%, var(--board-cell) 51%);
+  color: var(--amber); font: 700 clamp(12px, 3.4vw, 39px)/1 var(--mono); transform-origin: 50% 50%;
+}
+.roles { display: flex; flex-wrap: wrap; gap: 7px; }
+.role {
+  padding: 8px 12px; border-radius: 6px; font-size: 14.5px; font-weight: 500; line-height: 1.2;
+  color: #dfe4f5; box-shadow: inset 0 0 0 1px var(--board-line); transition: background .15s, color .15s;
+}
+.role:hover { box-shadow: inset 0 0 0 1px var(--amber); }
+.role[aria-pressed="true"] { background: var(--amber); color: var(--board); box-shadow: none; font-weight: 600; }
+.role:focus-visible { outline-color: var(--amber); }
+.fit { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 28px; border-top: 1px solid var(--board-line); padding-top: 16px; }
+.fit li { display: grid; gap: 5px; align-content: start; font-size: 15.5px; line-height: 1.42; color: #eef1fb; }
+.fit a { font: 500 12.5px/1.3 var(--mono); color: var(--amber); }
+.fit-note { font: 400 12.5px/1.4 var(--mono); color: var(--board-mute); }
+
+/* Strengths */
+.strengths { background: var(--surface); border-block: 1px solid var(--line); }
+.strength-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px clamp(28px, 5vw, 56px); }
+.strength-grid > div { display: grid; gap: 8px; align-content: start; }
+.summary { font: 500 clamp(21px, 2.8vw, 28px)/1.32 var(--display); color: var(--ink); max-width: 30em; margin-bottom: clamp(30px, 5vw, 46px); letter-spacing: -0.01em; }
+
+/* Research */
+.research-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px 48px; align-items: end; margin-bottom: clamp(30px, 5vw, 48px); }
+.research-top .intro { margin-bottom: 0; }
+.span { text-align: right; }
+.span b { display: block; font: 800 clamp(64px, 11vw, 116px)/.9 var(--display); color: var(--accent); letter-spacing: -0.04em; }
+.span small { font: 500 13px/1.4 var(--mono); color: var(--muted); }
+.route { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-top: 46px; }
+.route::before, .route-done { content: ""; position: absolute; top: 22px; left: 12.5%; height: 2px; }
+.route::before { right: 12.5%; background-image: repeating-linear-gradient(90deg, var(--muted) 0 7px, transparent 7px 14px); }
+.route-done { width: 0; background: var(--accent); transition: width .55s cubic-bezier(.5, 0, .2, 1); }
+.plane {
+  position: absolute; top: 9px; left: 12.5%; width: 28px; height: 28px; margin-left: -14px; color: var(--accent);
+  transition: left .55s cubic-bezier(.5, 0, .2, 1);
+}
+.plane svg { display: block; width: 100%; height: 100%; }
+.step { position: relative; display: grid; justify-items: center; gap: 2px; padding-block: 6px 12px; color: var(--muted); font-weight: 600; font-size: 16px; }
+.step::before { content: ""; position: absolute; top: -28px; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--muted); }
+.step small { font: 400 12px/1.3 var(--mono); color: var(--muted); }
+.step:hover { color: var(--ink); }
+.step[aria-selected="true"] { color: var(--ink); }
+.step[aria-selected="true"]::before { background: var(--accent); box-shadow: none; }
+.leg { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: clamp(20px, 4vw, 38px); min-height: 280px; display: grid; gap: 18px; align-content: start; }
+.leg > p { max-width: 62ch; }
+.lenses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+.lenses li { display: grid; gap: 2px; padding-top: 10px; border-top: 1px solid var(--line); }
+.lenses b, .recs b { font: 650 18px/1.25 var(--display); color: var(--ink); }
+.recs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 28px; }
+.recs li { display: grid; gap: 4px; align-content: start; }
+.recs span:first-child { font: 500 12.5px/1 var(--mono); color: var(--accent); }
+.bullets { display: grid; gap: 12px; max-width: 66ch; }
+.bullets li { padding-left: 22px; position: relative; color: var(--ink); }
+.bullets li::before { content: ""; position: absolute; left: 0; top: .62em; width: 10px; height: 2px; background: var(--accent); }
+
+/* Career */
+.career { background: var(--surface); border-block: 1px solid var(--line); }
+.career-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(26px, 5vw, 56px); align-items: start; }
+.tl-list { display: grid; gap: 6px; }
+.tl {
+  display: grid; gap: 7px; width: 100%; text-align: left; padding: 13px 14px; border-radius: 8px;
+  transition: background .15s;
+}
+.tl:hover { background: var(--bg); }
+.tl[aria-selected="true"] { background: var(--soft); }
+.tl-title { font: 650 18px/1.2 var(--display); color: var(--ink); }
+.tl-sub { font: 400 12.5px/1.3 var(--mono); color: var(--muted); }
+.track { position: relative; display: block; height: 7px; background: var(--line); border-radius: 4px; }
+.track i { position: absolute; top: 0; bottom: 0; background: var(--accent); border-radius: 4px; }
+.axis { display: flex; justify-content: space-between; padding-inline: 14px; font: 400 12px/1 var(--mono); color: var(--muted); margin-top: 8px; }
+.panel { display: grid; gap: 14px; min-width: 0; align-content: start; }
+.panel-org { color: var(--accent); font-weight: 500; font-size: 15.5px; margin-top: -8px; }
+.rows li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 13em); gap: 3px 18px; padding-block: 10px; border-top: 1px solid var(--line); font-size: 15.5px; line-height: 1.42; }
+.rows li:last-child { border-bottom: 1px solid var(--line); }
+.rows b { font-weight: 600; color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(26px, 4vw, 40px); }
+.chips li { padding: 7px 12px; border-radius: 6px; background: var(--bg); color: var(--ink); font-size: 14.5px; line-height: 1.2; box-shadow: inset 0 0 0 1px var(--line); }
+
+/* Credentials */
+.creds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px clamp(28px, 5vw, 56px); }
+.creds h3 { margin-bottom: 10px; }
+.plain li { padding-block: 10px; border-top: 1px solid var(--line); font-size: 16px; line-height: 1.4; color: var(--ink); }
+.plain li:last-child { border-bottom: 1px solid var(--line); }
+
+/* Contact */
+.contact { background: var(--board); color: #dfe4f5; }
+.contact h2 { color: #ffffff; max-width: 15em; }
+.contact .eyebrow { color: var(--amber); }
+.contact-grid { display: grid; gap: 28px; }
+.lines { display: grid; }
+.line { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 18px; padding-block: 14px; border-top: 1px solid var(--board-line); }
+.line:last-child { border-bottom: 1px solid var(--board-line); }
+.line dt { font: 400 12.5px/1.2 var(--mono); color: var(--board-mute); width: 5.5em; }
+.line dd { flex: 1 1 14em; min-width: 0; font: 600 clamp(18px, 3vw, 25px)/1.25 var(--display); color: #ffffff; overflow-wrap: anywhere; }
+.line a { color: #ffffff; }
+.copy { font: 500 12.5px/1 var(--mono); color: var(--amber); padding: 8px 10px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--board-line); }
+.copy:focus-visible, .contact a:focus-visible { outline-color: var(--amber); }
+.contact-end { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 24px; }
+.contact-end .btn { background: var(--amber); color: var(--board); }
+.foot { font: 400 12.5px/1.4 var(--mono); color: var(--board-mute); padding-block: 0 26px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Scroll motion. Elements start nearly visible and only below the fold, so the page never depends on it. */
+.flight { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; overflow: visible; pointer-events: none; }
+.flight i { position: absolute; inset: 0; background: var(--accent); transform: scaleX(var(--p, 0)); transform-origin: left; }
+.flight svg { position: absolute; top: -7px; left: calc(var(--p, 0) * 100%); width: 16px; height: 16px; margin-left: -16px; color: var(--accent); }
+.hero { overflow-x: clip; }
+h1 span { will-change: transform; }
+.rv { transition: opacity .7s ease, transform .75s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--i, 0) * 90ms); }
+.rv.pre { opacity: .12; transform: translateY(36px); }
+.track i { transform-origin: left; transition: transform 1s cubic-bezier(.2, .7, .2, 1) .25s; }
+.pre .track i { transform: scaleX(0); }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.leg:not([hidden]), .panel:not([hidden]) { animation: rise .4s ease; }
+
+@media (max-width: 860px) {
+  .hero-sub, .career-grid, .fit, .strength-grid, .recs { grid-template-columns: minmax(0, 1fr); }
+  .fit { gap: 12px; }
+  .nav-links { display: none; }
+  .research-top { grid-template-columns: minmax(0, 1fr); }
+  .span { text-align: left; }
+}
+@media (max-width: 560px) {
+  .lenses, .creds { grid-template-columns: minmax(0, 1fr); }
+  .rows li { grid-template-columns: minmax(0, 1fr); }
+  .step { font-size: 14.5px; }
+  .step small { display: none; }
+  .nav .btn { padding-inline: 11px; }
+  .leg { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+@media print {
+  .rv.pre { opacity: 1; transform: none; }
+  .pre .track i { transform: none; }
+  .nav, .roles, .copy, .route, .contact-end .btn { display: none; }
+  [hidden] { display: grid !important; }
+  body { font-size: 12px; }
+  .band { padding-block: 20px; }
+  .leg, .panel { break-inside: avoid; margin-bottom: 10px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="shell">
+    <a class="brand" href="#top" aria-label="Back to top">KT</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#career">Career</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme" id="theme" type="button">Dark</button>
+    <a class="btn" href="Kugonakwashe_Taanarwo_Portfolio.pdf" download>Download PDF</a>
+  </div>
+  <div class="flight" id="flight" aria-hidden="true"><i></i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 12 3 3.6l3.4 7.1 7.3 1.3-7.3 1.3L3 20.4z"/></svg></div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="shell hero-grid">
+    <h1><span id="n1">Kugonakwashe</span> <span class="last" id="n2">Taanarwo</span></h1>
+
+    <div class="hero-sub">
+      <p class="tag">History and international affairs graduate who finds, organises and analyses information, then turns it into clear recommendations.</p>
+      <div class="meta">
+        <p>BA Honours, University of Zimbabwe</p>
+        <p>Based in Harare</p>
+      </div>
+    </div>
+
+    <div class="board">
+      <div class="board-head"><span><b>HRE</b> Now seeking</span><span>Choose the role you are hiring for</span></div>
+      <div class="flaps" id="flaps" aria-hidden="true"></div>
+      <p class="sr" id="flap-live" aria-live="polite"></p>
+      <div class="roles" id="roles" role="group" aria-label="Role you are hiring for"></div>
+      <ol class="fit" id="fit"></ol>
+    </div>
+  </div>
+</section>
+
+<section class="strengths band">
+  <div class="shell">
+    <p class="summary">I have researched a national institution across 44 years, kept library records at a Harare school for a year and completed Youth Service community training. I am looking for an entry-level role where careful research, reliable administration and good work with people matter.</p>
+    <div class="strength-grid">
+      <div><h3>Research and analysis</h3><p>Qualitative dissertation on Air Zimbabwe, 1980&ndash;2024, ending in practical recommendations on governance, planning and fleet renewal.</p></div>
+      <div><h3>Records and administration</h3><p>Catalogued resources, monitored a borrowing system and kept circulation records for a full year. Studied records and archives preservation.</p></div>
+      <div><h3>People and communities</h3><p>Supported teachers and learners daily, then trained in community engagement and took part in community development work.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="research">
+  <div class="shell">
+    <div class="research-top">
+      <div class="intro">
+        <p class="eyebrow">Research case study</p>
+        <h2>Operational Challenges in the Aviation Industry: A Case of Air Zimbabwe</h2>
+        <p>Honours dissertation, University of Zimbabwe. Qualitative research.</p>
+      </div>
+      <p class="span"><b id="years">44</b><small>years studied, 1980&ndash;2024</small></p>
+    </div>
+
+    <div class="route" id="route" role="tablist" aria-label="Research case study stages">
+      <span class="route-done" id="route-done"></span>
+      <span class="plane" id="plane" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 12 3 3.6l3.4 7.1 7.3 1.3-7.3 1.3L3 20.4z"/></svg>
+      </span>
+      <button class="step" role="tab" id="s1" aria-controls="l1" aria-selected="true" type="button">Problem<small>Start</small></button>
+      <button class="step" role="tab" id="s2" aria-controls="l2" aria-selected="false" type="button">Approach<small>Four lenses</small></button>
+      <button class="step" role="tab" id="s3" aria-controls="l3" aria-selected="false" type="button">Proposals<small>Three areas</small></button>
+      <button class="step" role="tab" id="s4" aria-controls="l4" aria-selected="false" type="button">Value<small>For employers</small></button>
+    </div>
+
+    <div class="legs">
+    <div class="leg" id="l1" role="tabpanel" aria-labelledby="s1" tabindex="0">
+      <h3>The problem</h3>
+      <p>National airlines operate in a competitive and changing global industry, and their difficulties rarely have a single cause. I set out to explain the long-term factors behind Air Zimbabwe&rsquo;s performance and decline, and what could be done about them.</p>
+    </div>
+    <div class="leg" id="l2" role="tabpanel" aria-labelledby="s2" tabindex="0">
+      <h3>How I approached it</h3>
+      <p>I traced the airline&rsquo;s history from 1980 to 2024, analysed information from relevant research sources and examined its institutional weaknesses through four lenses.</p>
+      <ul class="lenses">
+        <li><b>Historical legacies</b><span>What did the airline inherit, and how did it shape later performance?</span></li>
+        <li><b>Governance gaps</b><span>Where did the institution&rsquo;s structures and oversight need strengthening?</span></li>
+        <li><b>Political influences</b><span>How did politics affect the way the airline operated?</span></li>
+        <li><b>Economic pressures</b><span>Which economic conditions constrained its performance?</span></li>
+      </ul>
+    </div>
+    <div class="leg" id="l3" role="tabpanel" aria-labelledby="s3" tabindex="0">
+      <h3>What I recommended</h3>
+      <p>The dissertation closes with practical recommendations in three areas.</p>
+      <ul class="recs">
+        <li><b>Governance improvements</b><span>To address the institutional weaknesses identified.</span></li>
+        <li><b>Strategic planning</b><span>For a competitive and evolving sector.</span></li>
+        <li><b>Fleet renewal</b><span>As a route to operational improvement.</span></li>
+      </ul>
+    </div>
+    <div class="leg" id="l4" role="tabpanel" aria-labelledby="s4" tabindex="0">
+      <h3>What this shows an employer</h3>
+      <ul class="bullets">
+        <li>I can manage a long, independent research project through to a finished piece of work.</li>
+        <li>I can look past symptoms and explain how history, politics, money and management interact inside an organisation.</li>
+        <li>I can move from analysis to practical recommendations, the same step needed in reports, policy briefs and programme reviews.</li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="career band" id="career">
+  <div class="shell">
+    <div class="intro">
+      <p class="eyebrow">Career record</p>
+      <h2>Five years, three chapters</h2>
+      <p>Select a chapter to see what I did and what it shows.</p>
+    </div>
+
+    <div class="career-grid">
+      <div>
+        <div class="tl-list" id="tl" role="tablist" aria-label="Career chapters" aria-orientation="vertical">
+          <button class="tl" role="tab" id="t1" aria-controls="p1" aria-selected="false" type="button">
+            <span class="tl-title">BA Honours degree</span>
+            <span class="tl-sub">Aug 2021 &ndash; Aug 2025</span>
+            <span class="track"><i style="left:9.72%;width:66.67%"></i></span>
+          </button>
+          <button class="tl" role="tab" id="t2" aria-controls="p2" aria-selected="true" type="button">
+            <span class="tl-title">Library Assistant</span>
+            <span class="tl-sub">Jul 2023 &ndash; Jul 2024</span>
+            <span class="track"><i style="left:41.67%;width:16.67%"></i></span>
+          </button>
+          <button class="tl" role="tab" id="t3" aria-controls="p3" aria-selected="false" type="button">
+            <span class="tl-title">Youth Service in Zimbabwe</span>
+            <span class="tl-sub">Feb 2026 &ndash; Aug 2026</span>
+            <span class="track"><i style="left:84.72%;width:8.33%"></i></span>
+          </button>
+        </div>
+        <div class="axis" aria-hidden="true"><span>2021</span><span>2023</span><span>2025</span><span>2027</span></div>
+      </div>
+
+      <div>
+        <div class="panel" id="p1" role="tabpanel" aria-labelledby="t1" tabindex="0">
+          <h3>BA Honours in Zimbabwean History and International Affairs</h3>
+          <p class="panel-org">University of Zimbabwe, Faculty of Arts and Humanities</p>
+          <p>Degree awarded 30 July 2025. Research focus area: Operations of the Aviation Industry.</p>
+          <ul class="rows">
+            <li><span>Preserving Records and Archives</span><b>Records and archives work</b></li>
+            <li><span>Historiography and Historiographical Traditions</span><b>Weighing sources and evidence</b></li>
+            <li><span>African Political Ideas</span><b>Policy and governance</b></li>
+            <li><span>Europe in History and Global Affairs</span><b>International relations</b></li>
+            <li><span>Land and Environmental History of Sub-Saharan Africa</span><b>Development and environment</b></li>
+          </ul>
+        </div>
+        <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2" tabindex="0">
+          <h3>Library Assistant, Education Internship</h3>
+          <p class="panel-org">Queen Elizabeth High School, Harare</p>
+          <ul class="rows">
+            <li><span>Organised and catalogued books and educational resources</span><b>Information management</b></li>
+            <li><span>Monitored the borrowing system and kept circulation records, helping materials move smoothly</span><b>Record keeping and accuracy</b></li>
+            <li><span>Helped teachers and students find research materials for coursework, debates and projects</span><b>Research support and service</b></li>
+            <li><span>Supported the preparation of reading lists and resource packs for History and Social Studies</span><b>Preparing useful documents</b></li>
+            <li><span>Gave academic and research support to learners working on national and international issues</span><b>Communication and mentoring</b></li>
+            <li><span>Kept the library orderly and accessible for independent reading and research</span><b>Organisation and reliability</b></li>
+          </ul>
+        </div>
+        <div class="panel" id="p3" role="tabpanel" aria-labelledby="t3" tabindex="0">
+          <h3>Youth Service in Zimbabwe, Community Service</h3>
+          <p class="panel-org">Dadaya Youth Service Training Centre</p>
+          <ul class="rows">
+            <li><span>Took part in community service and development activities</span><b>Community engagement</b></li>
+            <li><span>Completed structured training over six months</span><b>Discipline, teamwork and leadership</b></li>
+            <li><span>Trained in basic ICT, environmental management and community engagement</span><b>Practical and digital skills</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <ul class="chips" aria-label="Working strengths">
+      <li>Report writing and documentation</li>
+      <li>Online research tools</li>
+      <li>Filing and office coordination</li>
+      <li>Stakeholder service</li>
+      <li>Handling information responsibly</li>
+      <li>Working alone or in a team</li>
+      <li>Time management</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="credentials">
+  <div class="shell">
+    <div class="intro">
+      <p class="eyebrow">Credentials</p>
+      <h2>Ready to verify</h2>
+    </div>
+    <div class="creds">
+      <div>
+        <h3>Certificates and licences</h3>
+        <ul class="plain">
+          <li>Youth Service in Zimbabwe Certificate, 2026</li>
+          <li>National Foundation Certificate in Cabinet Making, 2018</li>
+          <li>Clean Class 4 driver&rsquo;s licence, obtained 2019</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Available on request</h3>
+        <ul class="plain">
+          <li>Certified copy of degree certificate</li>
+          <li>Copies of certificates and licence</li>
+          <li>Dissertation for review</li>
+          <li>Academic and workplace references</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact band" id="contact">
+  <div class="shell contact-grid">
+    <p class="eyebrow">Contact</p>
+    <h2>Let&rsquo;s talk about your next hire</h2>
+    <dl class="lines">
+      <div class="line"><dt>Email</dt><dd><a href="mailto:ktaanarwo@gmail.com">ktaanarwo@gmail.com</a></dd><button class="copy" type="button" data-copy="ktaanarwo@gmail.com">Copy</button></div>
+      <div class="line"><dt>Phone</dt><dd><a href="tel:+263783732103">+263 783 732 103</a></dd><button class="copy" type="button" data-copy="+263783732103">Copy</button></div>
+      <div class="line"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/kugonakwashe-taanarwo-489b002a3" target="_blank" rel="noopener">kugonakwashe-taanarwo</a></dd></div>
+    </dl>
+    <div class="contact-end">
+      <span>Harare, Zimbabwe</span>
+      <a class="btn" href="Kugonakwashe_Taanarwo_Portfolio.pdf" download>Download the PDF portfolio</a>
+    </div>
+  </div>
+  <div class="shell"><p class="foot" style="padding-top:28px">Kugonakwashe Taanarwo</p></div>
+</section>
+</main>
+
+<script>
+(function () {
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Role board */
+  var ROLES = [
+    { name: "Research assistant", board: "RESEARCH ASSISTANT", fit: [
+      ["A 44-year qualitative study of Air Zimbabwe, from question to recommendations.", "#research", "See the case study"],
+      ["Helped teachers and students find research materials for coursework, debates and projects.", "#career", "See the internship"],
+      ["Coursework in historiography, focused on weighing sources and evidence.", "#career", "See the degree"] ] },
+    { name: "Programme assistant", board: "PROGRAMME ASSISTANT", fit: [
+      ["Took part in community service and development activities with Youth Service.", "#career", "See Youth Service"],
+      ["Trained in community engagement, basic ICT and environmental management.", "#career", "See Youth Service"],
+      ["Moves from analysis to practical recommendations, as reviews and reports require.", "#research", "See the case study"] ] },
+    { name: "Administrative assistant", board: "ADMIN ASSISTANT", fit: [
+      ["Monitored a borrowing system and kept circulation records for a full year.", "#career", "See the internship"],
+      ["Prepared reading lists and resource packs for History and Social Studies.", "#career", "See the internship"],
+      ["Holds a clean Class 4 driver’s licence, obtained 2019.", "#credentials", "See credentials"] ] },
+    { name: "Records or archives", board: "RECORDS ASSISTANT", fit: [
+      ["Studied Preserving Records and Archives at the University of Zimbabwe.", "#career", "See the degree"],
+      ["Organised and catalogued books and educational resources.", "#career", "See the internship"],
+      ["Used to handling information responsibly and keeping it easy to find.", "#career", "See the internship"] ] },
+    { name: "Library or information", board: "LIBRARY ASSISTANT", fit: [
+      ["One year as a Library Assistant at Queen Elizabeth High School, Harare.", "#career", "See the internship"],
+      ["Catalogued resources and kept the borrowing system running smoothly.", "#career", "See the internship"],
+      ["Gave academic and research support to learners.", "#career", "See the internship"] ] },
+    { name: "Community or youth", board: "COMMUNITY OFFICER", fit: [
+      ["Six months of Youth Service training and community service at Dadaya.", "#career", "See Youth Service"],
+      ["Trained in community engagement and environmental management.", "#career", "See Youth Service"],
+      ["Supported learners working on national and international issues.", "#career", "See the internship"] ] },
+    { name: "Graduate trainee", board: "GRADUATE TRAINEE", fit: [
+      ["BA Honours from the University of Zimbabwe, awarded July 2025.", "#career", "See the degree"],
+      ["Proven range across research, records and community work.", "#research", "See the case study"],
+      ["Disciplined through six months of structured training.", "#career", "See Youth Service"] ] }
+  ];
+  var LINK_TAB = { "See the degree": "t1", "See the internship": "t2", "See Youth Service": "t3" };
+  var CELLS = 19, GLYPHS = "ABCDEFGHIKLMNOPRSTUVY";
+  var flaps = document.getElementById("flaps"), cells = [];
+  for (var c = 0; c < CELLS; c++) {
+    var d = document.createElement("span");
+    d.className = "flap"; d.textContent = " ";
+    flaps.appendChild(d); cells.push(d);
+  }
+  var run = 0;
+  function flipTo(text) {
+    var id = ++run, target = text.padEnd(CELLS, " ");
+    cells.forEach(function (cell, i) {
+      var want = target[i];
+      if (cell.textContent === want) return;
+      if (reduced) { cell.textContent = want; return; }
+      var left = 3 + (i % 4);
+      (function tick() {
+        if (id !== run) return;
+        if (left-- <= 0) { cell.textContent = want; return; }
+        cell.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        if (cell.animate) cell.animate([{ transform: "rotateX(-65deg)" }, { transform: "none" }], { duration: 70 });
+        setTimeout(tick, 70);
+      })();
+    });
+  }
+  var rolesEl = document.getElementById("roles"), fitEl = document.getElementById("fit");
+  function selectRole(i) {
+    var role = ROLES[i];
+    Array.prototype.forEach.call(rolesEl.children, function (b, n) {
+      b.setAttribute("aria-pressed", n === i ? "true" : "false");
+    });
+    flipTo(role.board);
+    document.getElementById("flap-live").textContent = "Showing evidence for " + role.name;
+    fitEl.innerHTML = "";
+    role.fit.forEach(function (f) {
+      var li = document.createElement("li"), p = document.createElement("span"), a = document.createElement("a");
+      p.textContent = f[0]; a.textContent = f[2]; a.href = f[1];
+      if (LINK_TAB[f[2]]) a.addEventListener("click", function () { document.getElementById(LINK_TAB[f[2]]).click(); });
+      li.appendChild(p); li.appendChild(a); fitEl.appendChild(li);
+    });
+  }
+  ROLES.forEach(function (r, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "role"; b.textContent = r.name;
+    b.addEventListener("click", function () { selectRole(i); });
+    rolesEl.appendChild(b);
+  });
+  selectRole(0);
+
+  /* Tabs shared by the flight path and the career timeline */
+  function tabs(listId, onChange) {
+    var list = document.getElementById(listId);
+    var items = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    function show(tab, focus) {
+      items.forEach(function (t, i) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+        if (on && onChange) onChange(i, items.length);
+      });
+      if (focus) tab.focus();
+    }
+    items.forEach(function (t, i) {
+      t.addEventListener("click", function () { show(t); });
+      t.addEventListener("keydown", function (e) {
+        var step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (!step) return;
+        e.preventDefault();
+        show(items[(i + step + items.length) % items.length], true);
+      });
+    });
+    show(items.filter(function (t) { return t.getAttribute("aria-selected") === "true"; })[0]);
+  }
+  tabs("route", function (i, n) {
+    var pos = (i + 0.5) / n * 100;
+    document.getElementById("plane").style.left = pos + "%";
+    document.getElementById("route-done").style.width = (pos - 12.5) + "%";
+  });
+  tabs("tl");
+
+  /* Current section in the navigation */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+  if ("IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    links.forEach(function (a) { spy.observe(document.querySelector(a.getAttribute("href"))); });
+  }
+
+  /* Scroll motion */
+  var flight = document.getElementById("flight");
+  var n1 = document.getElementById("n1"), n2 = document.getElementById("n2");
+  var queued = false;
+  function onScroll() {
+    queued = false;
+    var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    flight.style.setProperty("--p", max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
+    if (!reduced && y < window.innerHeight * 1.2) {
+      n1.style.transform = "translateX(" + (-y * 0.08).toFixed(1) + "px)";
+      n2.style.transform = "translateX(" + (y * 0.14).toFixed(1) + "px)";
+    }
+  }
+  window.addEventListener("scroll", function () {
+    if (!queued) { queued = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  function countUp(el) {
+    var end = Number(el.textContent), start = performance.now();
+    (function frame(now) {
+      var t = Math.min(1, (now - start) / 1100);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(frame);
+    })(start);
+  }
+  if (!reduced && "IntersectionObserver" in window) {
+    var targets = document.querySelectorAll(".summary, .strength-grid > div, .intro, .span, .route, .legs, .career-grid > div, .chips li, .creds > div, .contact h2, .line, .contact-end");
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        seen.unobserve(e.target);
+        e.target.classList.remove("pre");
+        if (e.target.classList.contains("span")) countUp(document.getElementById("years"));
+      });
+    }, { threshold: 0.05, rootMargin: "0px 0px -6% 0px" });
+    Array.prototype.forEach.call(targets, function (el) {
+      el.classList.add("rv");
+      el.style.setProperty("--i", Math.min(Array.prototype.indexOf.call(el.parentNode.children, el), 6));
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+      el.classList.add("pre");
+      seen.observe(el);
+    });
+  }
+
+  /* Theme */
+  var root = document.documentElement, themeBtn = document.getElementById("theme");
+  function isDark() {
+    var t = root.getAttribute("data-theme");
+    return t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function labelTheme() {
+    themeBtn.textContent = isDark() ? "Light" : "Dark";
+    themeBtn.setAttribute("aria-label", "Switch to " + (isDark() ? "light" : "dark") + " theme");
+  }
+  themeBtn.addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("kt-theme", next); } catch (e) {}
+    labelTheme();
+  });
+  labelTheme();
+
+  /* Copy contact details */
+  Array.prototype.forEach.call(document.querySelectorAll(".copy"), function (b) {
+    b.addEventListener("click", function () {
+      function done(msg) {
+        b.textContent = msg;
+        setTimeout(function () { b.textContent = "Copy"; }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(b.dataset.copy).then(function () { done("Copied"); }, function () { done("Select to copy"); });
+      } else { done("Select to copy"); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
